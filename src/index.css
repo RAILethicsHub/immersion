@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Share Tech Mono', monospace, ui-monospace;
+  --font-display: 'VT323', monospace;
+  --font-mono: 'Share Tech Mono', monospace, ui-monospace;
+}
+
+/* CRT Scanlines overlay effect */
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.45) 50%);
+  background-size: 100% 4px;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* CRT Phosphor Screen flicker */
+.crt-screen {
+  animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.985; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+/* Screen tearing visual simulation class */
+.glitch-tear {
+  position: relative;
+  animation: text-tear 3.5s infinite steps(1);
+}
+
+@keyframes text-tear {
+  0%, 100% { transform: skew(0deg); filter: hue-rotate(0deg); }
+  92% { transform: skew(0deg); }
+  93% { transform: skew(8deg) scaleY(1.05); filter: hue-rotate(90deg); }
+  94% { transform: skew(-15deg); filter: hue-rotate(180deg); }
+  95% { transform: skew(0deg); }
+  97% { transform: skew(10deg) scaleY(0.95); filter: hue-rotate(270deg); }
+  98% { transform: skew(-5deg); }
+}
+
+/* Glitch border offset */
+.glitch-border {
+  border: 2px solid #00f0ff;
+  box-shadow: -2.5px -2.5px 0px #ff007f, 2.5px 2.5px 0px #00f0ff;
+}
+
+/* Blinking vintage static noise */
+.static-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0%200%20200%20200'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter%20id='noise'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85_0.9'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23noise)'%20opacity='0.08'/%3E%3C/svg%3E");
+}
+
+/* Custom raw pixelated scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px dashed #ff007f;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f0ff;
+  border: 2px solid #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff007f;
+}
+
+.rotate-fast {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

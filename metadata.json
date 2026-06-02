@@ -1,0 +1,6 @@
+{
+  "name": "Snake Game and Music Player",
+  "description": "An interactive Web Audio-based music player and classic Snake game combined into a dark neon aesthetic application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
